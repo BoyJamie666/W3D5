@@ -12,15 +12,18 @@ class PolyTreeNode
 
   def parent=(parent_node)
     # debugger
+    if parent != nil
+       parent.children.delete(self)
+    end
+   
     @parent = parent_node
-
-    parent_node.children.delete(self)
 
     if self.parent == nil
       @children = nil
     elsif !parent_node.children.include?(self) 
-      parent_node.children << self
+      parent.children << self
     end
-
   end
+
+  
 end
