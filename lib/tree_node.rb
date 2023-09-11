@@ -1,5 +1,3 @@
-require 'byebug'
-
 class PolyTreeNode
   
   attr_reader :value, :parent, :children 
@@ -50,4 +48,19 @@ class PolyTreeNode
 
     return nil
   end
+
+  def bfs(target_value)
+    queue = [self]
+
+    until queue.empty? 
+      ele = queue.shift
+      if ele.value == target_value 
+        return ele
+      end
+      queue += ele.children
+    end
+
+    nil
+  end
+  
 end
